@@ -14,7 +14,7 @@ def upload_to_database(df):
     cnx.close()
     return None
 
-@st.cache(allow_output_mutation=True)
+#@st.cache(allow_output_mutation=True)
 def connect_to_database():
 
     # ---- Connect to the database ----
