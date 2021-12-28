@@ -1,0 +1,4 @@
+# comando para contruir el docker
+sudo docker build -t streamlitapp:ods .
+#comando para correr el docker
+docker run -p 8501:8501 streamlitapp:ods
