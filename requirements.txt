@@ -3,3 +3,7 @@ plotly
 mysql-connector-python
 sqlalchemy
 MySQL
+pyxlsb
+streamlit-aggrid
+xlsxwriter
+mysqlclient
