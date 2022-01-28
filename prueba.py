@@ -3,8 +3,10 @@ import streamlit as st
 from st_aggrid import AgGrid
 
 st.set_page_config(page_title="Netflix Shows", layout="wide") 
-st.title("Netlix shows analysis")
+st.title("ODS Limitaciones")
 
-shows = pd.read_csv("data/Limitaciones (1).csv")  
+shows = pd.read_excel("data/limitaciones.xlsx",engine="openpyxl")
 
 AgGrid(shows)
+
+# my

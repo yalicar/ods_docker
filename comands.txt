@@ -2,3 +2,4 @@
 sudo docker build -t streamlitapp:ods .
 #comando para correr el docker
 docker run -p 8501:8501 streamlitapp:ods
+mysql -u ycardenas -h 190.92.22.22 -p

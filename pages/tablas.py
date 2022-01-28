@@ -1,28 +1,27 @@
 # ---- Import libraries ----
+from st_aggrid import AgGrid
 import streamlit as st
+from st_aggrid.grid_options_builder import GridOptionsBuilder
+from st_aggrid.shared import GridUpdateMode
+
 
 def app(df):
-    df_grouped_plant = df.groupby(["Planta"])[["Energía Vertida (MWh)","Tiempo de Limitación (h)"]].sum().reset_index()
-    col1,col2 = st.columns(2)
-    with col1:
-        st.markdown("<h1 style='text-align: center;'> Resumen por planta </h1>", unsafe_allow_html=True)
-        st.dataframe(df_grouped_plant.sort_values(by=['Energía Vertida (MWh)'],ascending=False).style.format({'Energia':'{:,.2f}','TiempoLimitacion_Hrs':'{:,.0f}'}))
-    with col2:
-        st.text("")
-    st.download_button(
-       "Descargar tabla",
-       df_grouped_plant.to_csv(),
-       "DATA.csv",
-       "text/csv",
-       key='download-csv'
-       )
+    shows = df
+    gb = GridOptionsBuilder.from_dataframe(shows)
 
-    st.markdown("<h1 style='text-align: center;'> Tabla de limitaciones raw data</h1>", unsafe_allow_html=True)
-    st.dataframe(df)
-    st.download_button(
-       "Descargar tabla",
-       df.to_csv(),
-       "DATA.csv",
-       "text/csv",
-       key='download-csv'
-       )
+    #gb.configure_pagination(enabled=True)
+    gb.configure_side_bar()
+    gb.configure_default_column(groupable=True, value=True, enableRowGroup=True, aggFunc="sum", editable=True)
+    #gb.configure_selection(selection_mode="multiple", use_checkbox=True)
+    gridOptions = gb.build()
+
+    AgGrid(
+        shows,
+        gridOptions=gridOptions,
+        enable_enterprise_modules=True,
+        height="600px",
+        fit_columns_on_grid_load=True,
+        theme="dark",
+        quick_filter = True,
+        update_mode= GridUpdateMode.SELECTION_CHANGED
+    )

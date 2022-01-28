@@ -7,3 +7,4 @@ pyxlsb
 streamlit-aggrid
 xlsxwriter
 mysqlclient
+openpyxl
