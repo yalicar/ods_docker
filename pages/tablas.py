@@ -4,7 +4,6 @@ import streamlit as st
 from st_aggrid.grid_options_builder import GridOptionsBuilder
 from st_aggrid.shared import GridUpdateMode
 
-
 def app(df):
     shows = df
     gb = GridOptionsBuilder.from_dataframe(shows)

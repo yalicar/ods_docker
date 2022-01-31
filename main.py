@@ -27,7 +27,6 @@ else:
     app.add_page("Tablas",tablas.app)
     app.add_page("Gráficas",graficas.app)
     #app.add_page("Actualizar datos",dataupdate.app)
-
-
+    
     # ---- The main app ----
     app.run()
