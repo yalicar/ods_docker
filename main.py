@@ -24,7 +24,6 @@ else:
 
     # ---- Add all your application ----
 
-    #app.add_page("Mapa",mapa.app)
     app.add_page("Tablas",tablas.app)
     app.add_page("Gráficas",graficas.app)
     #app.add_page("Actualizar datos",dataupdate.app)
